@@ -16,9 +16,10 @@ const socialLinks = [
   { href: "https://youtube.com", label: "YouTube" },
 ]
 
-export function SiteFooter() {
+
+const Footer = () => {
   return (
-    <footer className="border-t bg-muted/30">
+      <footer className="border-t bg-muted/30">
       <Container className="py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
@@ -99,5 +100,7 @@ export function SiteFooter() {
         </div>
       </Container>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

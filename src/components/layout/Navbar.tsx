@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu } from "lucide-react"
-import { cn } from "cn"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
+import { cn } from "cn";
 
-import { Container } from "@/components/common/container"
-import { Logo } from "@/components/layout/logo"
-import { Button } from "@/components/ui/button"
+import { Container } from "@/components/common/container";
+import { Logo } from "@/components/layout/logo";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/facilities", label: "All Facilities" },
   { href: "/bookings", label: "My Bookings" },
-]
+];
 
-export function SiteHeader() {
-  const pathname = usePathname()
-  const [open, setOpen] = React.useState(false)
+const Navbar = () => {
+  const pathname = usePathname();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/90 backdrop-blur">
@@ -42,7 +42,7 @@ export function SiteHeader() {
               href={item.href}
               className={cn(
                 "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-                pathname === item.href && "text-primary"
+                pathname === item.href && "text-primary",
               )}
             >
               {item.label}
@@ -78,7 +78,7 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     "rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
-                    pathname === item.href && "bg-muted text-primary"
+                    pathname === item.href && "bg-muted text-primary",
                   )}
                 >
                   {item.label}
@@ -89,5 +89,7 @@ export function SiteHeader() {
         </Sheet>
       </Container>
     </header>
-  )
-}
+  );
+};
+
+export default Navbar;
