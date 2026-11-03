@@ -1,11 +1,12 @@
 import React from 'react';
+import AddFacilities from '../_components/AddFacilities';
 
-const AddFacilitiesPAge = () => {
+const AddFacilityPage = () => {
     return (
-        <div className='bg-gray-300  text-2xl font-bold text-center p-10' >
-            Add Facilities Page
+        <div>
+            <AddFacilities />
         </div>
     );
 };
 
-export default AddFacilitiesPAge;
+export default AddFacilityPage;

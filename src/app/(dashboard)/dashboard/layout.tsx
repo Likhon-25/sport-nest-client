@@ -1,19 +1,15 @@
 import React from "react";
 
-const layout = ({ children } : { children: React.ReactNode }) => {
-  return (
-    <div>
-      <div className="flex gap-6 h-screen">
-        <div className="font-bold text-6xl w-[250px] bg-yellow-500">
-          <h2>Layout</h2>
-        </div>
+import Sidebar from "./_components/Sidebar";
 
-        <div className="flex-1 bg-green-500">
-          <h2>{children}</h2>
-        </div>
-      </div>
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="min-h-screen bg-muted/40 lg:flex">
+      <Sidebar />
+
+      <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
     </div>
   );
 };
 
-export default layout;
+export default DashboardLayout;
