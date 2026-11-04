@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/toast";
 
 const sportTypes = [
   "Football",
@@ -55,14 +56,32 @@ const AddFacilities = () => {
     setForm((current) => ({ ...current, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget)
-    const result = Object.fromEntries(formData.entries())
-    console.log(result);
-    setMessage("Facility added successfully.");
-  }
+    const formData = new FormData(e.currentTarget);
+    const facility = Object.fromEntries(formData.entries());
+    console.log(facility);
+
+    const result = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities`,{
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(facility),
+      },
+    );
+    const data = await result.json()
+    console.log(data);
+
+    if(data.acknowledged){
+      toast.add({
+        title: "Facility added successfully",
+        description: "The facility has been added to the database.",
+        type: " success",
+      })
+    }
+  };
 
   const handleReset = () => {
     setForm(initialForm);
@@ -96,7 +115,9 @@ const AddFacilities = () => {
             <FieldGroup>
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field>
-                  <FieldLabel htmlFor="facility-name">Facility Name *</FieldLabel>
+                  <FieldLabel htmlFor="facility-name">
+                    Facility Name *
+                  </FieldLabel>
                   <Input
                     id="facility-name"
                     name="name"
@@ -176,7 +197,9 @@ const AddFacilities = () => {
                 </Field>
 
                 <Field>
-                  <FieldLabel htmlFor="capacity">Capacity (Players) *</FieldLabel>
+                  <FieldLabel htmlFor="capacity">
+                    Capacity (Players) *
+                  </FieldLabel>
                   <Input
                     id="capacity"
                     name="capacity"
@@ -229,5 +252,5 @@ const AddFacilities = () => {
       </Card>
     </div>
   );
-}
+};
 export default AddFacilities;
