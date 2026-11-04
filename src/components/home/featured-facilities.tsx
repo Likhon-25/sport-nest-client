@@ -4,9 +4,12 @@ import { SectionHeading } from "@/components/common/section-heading"
 import type { Facility } from "@/types/facility"
 
 export async function FeaturedFacilities() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities`, {
-    cache: "no-store",
-  }).catch(() => null)
+  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+  const res = serverUrl
+    ? await fetch(`${serverUrl}/facilities`, {
+        cache: "no-store",
+      }).catch(() => null)
+    : null
 
   const facilities: Facility[] =
     res && res.ok ? await res.json() : []

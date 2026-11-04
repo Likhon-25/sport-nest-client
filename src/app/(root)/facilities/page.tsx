@@ -4,10 +4,31 @@ import { SectionHeading } from "@/components/common/section-heading"
 import type { Facility } from "@/types/facility"
 
 const AllFacilities = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities`, {
-    cache: "no-store",
-  })
-  const data: Facility[] = await res.json()
+  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+
+  if (!serverUrl) {
+    return (
+      <Container className="py-16">
+        <p className="text-center text-muted-foreground">
+          Facility service is not configured.
+        </p>
+      </Container>
+    )
+  }
+
+  let data: Facility[] = []
+
+  try {
+    const res = await fetch(`${serverUrl}/facilities`, {
+      cache: "no-store",
+    })
+
+    if (res.ok) {
+      data = (await res.json()) as Facility[]
+    }
+  } catch {
+    data = []
+  }
 
   return (
     <section className="py-16 md:py-24">
