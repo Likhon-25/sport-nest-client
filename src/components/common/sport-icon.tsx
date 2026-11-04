@@ -9,6 +9,7 @@ import {
 } from "lucide-react"
 
 import type { SportIconName } from "@/types/home"
+import type { SportIconProps } from "@/types/components"
 
 const sportIcons: Record<SportIconName, LucideIcon> = {
   football: Goal,
@@ -17,11 +18,6 @@ const sportIcons: Record<SportIconName, LucideIcon> = {
   tennis: Trophy,
   badminton: Volleyball,
   swimming: Waves,
-}
-
-type SportIconProps = {
-  name: SportIconName
-  className?: string
 }
 
 export function SportIcon({ name, className }: SportIconProps) {

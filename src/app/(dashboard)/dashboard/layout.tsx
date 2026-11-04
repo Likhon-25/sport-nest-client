@@ -1,8 +1,7 @@
-import React from "react";
-
 import Sidebar from "./_components/Sidebar";
+import type { ChildrenProps } from "@/types/components";
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = ({ children }: ChildrenProps) => {
   return (
     <div className="min-h-screen bg-muted/40 lg:flex">
       <Sidebar />

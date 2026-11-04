@@ -1,28 +1,31 @@
-import Image from "next/image"
-import Link from "next/link"
 import { MapPin, Star } from "lucide-react"
+import Link from "next/link"
 import { cn } from "cn"
 
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import type { Facility } from "@/types/home"
+import type { FacilityCardProps } from "@/types/components"
 
-type FacilityCardProps = {
-  facility: Facility
-}
-
-export function FacilityCard({ facility }: FacilityCardProps) {
+const  FacilityCard = ({ facility }: FacilityCardProps) => {
   return (
     <Card className="overflow-hidden pt-0">
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-        <Image
-          src={facility.image}
-          alt={facility.imageAlt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-300 group-hover/card:scale-105"
-        />
+        {facility.image ? (
+          // User-provided image URLs can use any host.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={facility.image}
+            alt={facility.imageAlt || facility.name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-300"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-sm text-muted-foreground">
+            No image
+          </div>
+        )}
+
         <Badge className="absolute top-3 left-3">{facility.sport}</Badge>
       </div>
 
@@ -53,10 +56,9 @@ export function FacilityCard({ facility }: FacilityCardProps) {
           </span>
         </div>
       </CardContent>
-
       <CardFooter>
         <Link
-          href="/facilities"
+          href={`/facilities/${facility.id}`}
           className={cn(buttonVariants({ variant: "outline" }), "w-full")}
         >
           View Details
@@ -65,3 +67,4 @@ export function FacilityCard({ facility }: FacilityCardProps) {
     </Card>
   )
 }
+export default FacilityCard

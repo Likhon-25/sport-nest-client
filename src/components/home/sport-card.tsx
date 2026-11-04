@@ -1,9 +1,5 @@
 import { SportIcon } from "@/components/common/sport-icon"
-import type { Sport } from "@/types/home"
-
-type SportCardProps = {
-  sport: Sport
-}
+import type { SportCardProps } from "@/types/components"
 
 export function SportCard({ sport }: SportCardProps) {
   return (

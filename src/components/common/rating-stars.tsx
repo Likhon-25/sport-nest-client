@@ -1,11 +1,6 @@
 import { Star } from "lucide-react"
 import { cn } from "cn"
-
-type RatingStarsProps = {
-  rating: number
-  showValue?: boolean
-  className?: string
-}
+import type { RatingStarsProps } from "@/types/components"
 
 export function RatingStars({
   rating,

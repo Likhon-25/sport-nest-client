@@ -8,3 +8,9 @@ export type Facility = {
   capacity: string
   description: string
 }
+
+export type FacilityDetailsProps = {
+  params: Promise<{
+    id: string
+  }>
+}

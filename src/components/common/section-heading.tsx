@@ -1,12 +1,5 @@
 import { cn } from "cn"
-
-type SectionHeadingProps = {
-  eyebrow?: string
-  title: string
-  description?: string
-  align?: "left" | "center"
-  className?: string
-}
+import type { SectionHeadingProps } from "@/types/components"
 
 export function SectionHeading({
   eyebrow,

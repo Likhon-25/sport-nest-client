@@ -3,11 +3,7 @@ import { Quote } from "lucide-react"
 import { RatingStars } from "@/components/common/rating-stars"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
-import type { Testimonial } from "@/types/home"
-
-type TestimonialCardProps = {
-  testimonial: Testimonial
-}
+import type { TestimonialCardProps } from "@/types/components"
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (

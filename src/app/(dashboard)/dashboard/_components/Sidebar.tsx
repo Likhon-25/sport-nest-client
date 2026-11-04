@@ -15,6 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import type { SidebarNavProps } from "@/types/components";
 
 const navigation = [
   { label: "Add Facility", href: "/dashboard/add-facilities", icon: CirclePlus },
@@ -22,7 +23,7 @@ const navigation = [
   { label: "My Facilities", href: "/dashboard/my-facilities", icon: Building },
 ];
 
-function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
+function SidebarNav({ onNavigate }: SidebarNavProps) {
   const pathname = usePathname();
 
   return (

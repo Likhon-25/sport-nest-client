@@ -6,17 +6,14 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-import type { Feature, FeatureIconName } from "@/types/home"
+import type { FeatureIconName } from "@/types/home"
+import type { FeatureCardProps } from "@/types/components"
 
 const featureIcons: Record<FeatureIconName, LucideIcon> = {
   shield: ShieldCheck,
   calendar: CalendarCheck,
   clock: Clock,
   users: Users,
-}
-
-type FeatureCardProps = {
-  feature: Feature
 }
 
 export function FeatureCard({ feature }: FeatureCardProps) {

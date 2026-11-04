@@ -1,10 +1,7 @@
 import Link from "next/link"
 import { Trophy } from "lucide-react"
 import { cn } from "cn"
-
-type LogoProps = {
-  className?: string
-}
+import type { LogoProps } from "@/types/components"
 
 export function Logo({ className }: LogoProps) {
   return (
